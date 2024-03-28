@@ -1,0 +1,59 @@
+﻿body {
+    
+}
+.ContainerPageTitle {
+    display:flex;
+    flex-direction=row;
+    align-items:center;
+    border: solid 1px black;
+    margin-top: -1;
+    gap: 63vw;
+    padding-right: 0;
+    padding-left:0;
+    font-size:50px;
+
+}
+.pageTitle2{
+    margin-right:0;
+    font-size: 14px;
+}
+.page-title{
+    justify-content:center;
+    align-items:center;
+    background-color:black;
+    font-weight: 400;
+    color:white;
+    padding: 40px;
+    margin-left:0;
+    margin-top:0;
+    margin-bottom:0;
+    font-weight:600;
+    width:180px;
+
+}
+
+.ContainerRecipeDish .recipe-name{
+    font-size: 40px;
+    font-weight: 500;
+}
+.box{
+    border: solid 1px black;
+    background-color: lightgray;
+}
+.box .recipe-description{
+    font:20px;
+    font-weight:500;
+}
+.form{
+    display:flex;
+    flex-direction:row;
+    gap: 5vw;
+    justify-content: center;
+}
+.form-control{
+    width:300px;
+}
+.form-bottom{
+    display:flex;
+    justify-content:center;
+}

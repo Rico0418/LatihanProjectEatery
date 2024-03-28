@@ -1,0 +1,30 @@
+﻿body {
+}
+.ContainerPageTitle {
+    display:flex;
+    flex-direction=row;
+    align-items:center;
+    border: solid 1px black;
+    margin-top: -1;
+    gap: 63vw;
+    padding-right: 0;
+    padding-left:0;
+    font-size:50px;
+
+}
+.pageTitle2{
+    margin-right:0;
+    font-size: 14px;
+}
+.page-title{
+    align-items:center;
+    background-color:black;
+    font-weight: 400;
+    color:white;
+    padding: 40px;
+    margin-left:0;
+    margin-top:0;
+    margin-bottom:0;
+    width:180px;
+    font-weight:600;
+}
