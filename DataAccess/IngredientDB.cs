@@ -160,5 +160,67 @@ namespace DataAccess
                 throw ex;
             }
         }
+        public string GetRecipeNameByID(int recipeID)
+        {
+            try
+            {
+                string SpName = "dbo.RecipeName_GetByID";
+                string recipe = null;
+                using (SqlConnection SqlConn = new SqlConnection())
+                {
+                    SqlConn.ConnectionString = SystemConfigurations.EateryConnectionString;
+                    SqlConn.Open();
+                    SqlCommand SqlCmd = new SqlCommand(SpName, SqlConn);
+                    SqlCmd.CommandType = CommandType.StoredProcedure;
+                    SqlCmd.Parameters.Add(new SqlParameter("@RecipeID", recipeID));
+                    using (SqlDataReader Reader = SqlCmd.ExecuteReader())
+                    {
+                        if (Reader.HasRows)
+                        {
+                            Reader.Read();
+                            recipe = Convert.ToString(Reader["RecipeName"]);
+
+                        }
+                    }
+                    SqlConn.Close();
+                }
+                return recipe;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public string GetRecipeDescriptionByID(int recipeID)
+        {
+            try
+            {
+                string SpName = "dbo.RecipeDescription_GetByID";
+                string recipe = null;
+                using (SqlConnection SqlConn = new SqlConnection())
+                {
+                    SqlConn.ConnectionString = SystemConfigurations.EateryConnectionString;
+                    SqlConn.Open();
+                    SqlCommand SqlCmd = new SqlCommand(SpName, SqlConn);
+                    SqlCmd.CommandType = CommandType.StoredProcedure;
+                    SqlCmd.Parameters.Add(new SqlParameter("@RecipeID", recipeID));
+                    using (SqlDataReader Reader = SqlCmd.ExecuteReader())
+                    {
+                        if (Reader.HasRows)
+                        {
+                            Reader.Read();
+                            recipe = Convert.ToString(Reader["RecipeDescription"]);
+
+                        }
+                    }
+                    SqlConn.Close();
+                }
+                return recipe;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

@@ -40,27 +40,8 @@ namespace EateryDuwamish
         }
         private void LoadNameDish(int id)
         {
-            string connectionString = "Data Source=DESKTOP-VGK94KV;Initial Catalog=EateryDB;Integrated Security=True"; 
-            string query = "SELECT DishName FROM msDish WHERE DishID = @DishID";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@DishID", id);
-                    connection.Open();
-
-                    object result = command.ExecuteScalar();
-                    if (result != null)
-                    {
-                        LblDishName.Text = result.ToString();
-                    }
-                    else
-                    {
-                        LblDishName.Text = "Dish Not Found";
-                    }
-                }
-            }
+            string dishName = new RecipeSystem().GetDishNameByID(id);
+            LblDishName.Text = dishName;
         }
         private void LoadRecipeTable(int id)
         {

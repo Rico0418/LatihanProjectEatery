@@ -42,51 +42,13 @@ namespace EateryDuwamish
         }
         private void LoadNameRecipe(int id)
         {
-            string connectionString = "Data Source=DESKTOP-VGK94KV;Initial Catalog=EateryDB;Integrated Security=True"; // Replace with your actual connection string
-            string query = "SELECT RecipeName FROM msRecipe WHERE RecipeID = @RecipeID";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@RecipeID", id);
-                    connection.Open();
-
-                    object result = command.ExecuteScalar();
-                    if (result != null)
-                    {
-                        LblRecipeName.Text = result.ToString();
-                    }
-                    else
-                    {
-                        LblRecipeName.Text = "Dish Not Found";
-                    }
-                }
-            }
+            string recipeName = new IngredientSystem().GetRecipeNameByID(id);
+            LblRecipeName.Text = recipeName;
         }
         private void LoadDescriptionRecipe(int id)
         {
-            string connectionString = "Data Source=DESKTOP-VGK94KV;Initial Catalog=EateryDB;Integrated Security=True"; 
-            string query = "SELECT RecipeDescription FROM msRecipe WHERE RecipeID = @RecipeID";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@RecipeID", id);
-                    connection.Open();
-
-                    object result = command.ExecuteScalar();
-                    if (result != null)
-                    {
-                        txtDescription.Text = result.ToString();
-                    }
-                    else
-                    {
-                        txtDescription.Text = "Dish Not Found";
-                    }
-                }
-            }
+            string recipeDescription = new IngredientSystem().GetRecipeDescriptionByID(id);
+            txtDescription.Text = recipeDescription;
         }
         private void FillForm(IngredientData ingredient)
         {

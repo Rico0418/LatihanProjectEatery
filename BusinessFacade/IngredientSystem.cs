@@ -66,5 +66,27 @@ namespace BusinessFacade
                 throw ex;
             }
         }
+        public string GetRecipeNameByID(int recipeID)
+        {
+            try
+            {
+                return new IngredientDB().GetRecipeNameByID(recipeID);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public string GetRecipeDescriptionByID(int recipeID)
+        {
+            try
+            {
+                return new IngredientDB().GetRecipeDescriptionByID(recipeID);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

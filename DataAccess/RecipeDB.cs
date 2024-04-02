@@ -171,5 +171,36 @@ namespace DataAccess
                 throw ex;
             }
         }
+        public string GetDishNameByID(int dishID)
+        {
+            try
+            {
+                string SpName = "dbo.DishName_GetByID";
+                string recipe = null;
+                using (SqlConnection SqlConn = new SqlConnection())
+                {
+                    SqlConn.ConnectionString = SystemConfigurations.EateryConnectionString;
+                    SqlConn.Open();
+                    SqlCommand SqlCmd = new SqlCommand(SpName, SqlConn);
+                    SqlCmd.CommandType = CommandType.StoredProcedure;
+                    SqlCmd.Parameters.Add(new SqlParameter("@DishID", dishID));
+                    using (SqlDataReader Reader = SqlCmd.ExecuteReader())
+                    {
+                        if (Reader.HasRows)
+                        {
+                            Reader.Read();
+                            recipe = Convert.ToString(Reader["DishName"]); 
+
+                        }
+                    }
+                    SqlConn.Close();
+                }
+                return recipe;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
